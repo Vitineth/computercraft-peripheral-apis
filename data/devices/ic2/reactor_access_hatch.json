@@ -1,0 +1,7 @@
+{
+    "id": "reactor_access_hatch",
+    "owner": "ic2",
+    "name": "Reactor Access Hatch",
+    "defaultIdentifier": "ic2:reactor_access_hatch_(n)",
+    "functions": []
+}

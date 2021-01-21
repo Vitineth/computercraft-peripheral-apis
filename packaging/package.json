@@ -1,0 +1,16 @@
+{
+  "name": "packaging",
+  "version": "1.0.0",
+  "description": "Packages json files into a single specification document that can be rendered on the server",
+  "main": "index.js",
+  "scripts": {
+    "rollup": "rollup --config",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Delaney <vitineth@gmail.com> (https://xiomi.org)",
+  "license": "ISC",
+  "dependencies": {
+    "zod": "^1.11.11"
+  },
+  "type": "module"
+}
