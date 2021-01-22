@@ -1,24 +1,13 @@
-import {existsSync} from 'fs';
-import {readFile, writeFile, opendir} from 'fs/promises';
-import * as zod from 'zod';
-import {join, extname, dirname, basename} from 'path';
+const {existsSync} = require('fs');
+const {readFile, writeFile, opendir} = require('fs/promises');
+const {join, extname, dirname, basename} = require('path');
+const zod = require('zod');
 
 // Using my own color functions because its easier
 const red = (data) => `\u001b[31m${String(data)}\u001b[39m`;
 const bold = (data) => `\u001b[1m${String(data)}\u001b[22m`;
 const cyan = (data) => `\u001b[36m${String(data)}\u001b[39m`;
 const green = (data) => `\u001b[32m${String(data)}\u001b[39m`;
-
-// Using a module format to get better tree shaking so need to emulate the __dirname
-// constant but I only know how to do this if its a file url so check for that and fail
-// otherwise. The url also includes the filename, so if its the right format we then
-// trim off the file:// bit and also get the dirname of it.
-if(!import.meta.url.startsWith('file:///')){
-    console.log(red('Current URL doesn\'t seem to be a file! Stopping because I can\'t trust what I\'m doing anymore'));
-    process.exit(1);
-}
-
-let __dirname = dirname(import.meta.url.substr(7));
 
 const MOD_VALIDATOR = zod.object({
     /**

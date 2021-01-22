@@ -11,6 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "zod": "^1.11.11"
-  },
-  "type": "module"
+  }
 }
