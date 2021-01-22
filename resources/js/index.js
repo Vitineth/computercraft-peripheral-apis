@@ -1,6 +1,12 @@
 hljs.initHighlightingOnLoad();
 $(function(){
 
+    $('.scroll-to-top').click(function(){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: 0,
+        }, 500);
+    })
+
     $.get('/resources/spec.json', (data) => {
         generateDocumentation(data);
 
@@ -11,11 +17,15 @@ $(function(){
                 // Adding a small delay to let the page render itself properly because there is a massive dom change
                 // this is not ideal and may not work on very slow browsers. Hopefully this will work, its a bit of a
                 // hacky workaround right now
-                setTimeout(function(){
-                    $([document.documentElement, document.body]).animate({
-                        scrollTop: element.offset().top + 3
-                    }, 500);
-                }, 500);
+                // Source: https://forum.freecodecamp.org/t/how-to-make-js-wait-until-dom-is-updated/122067/3
+                // TODO: migrate to promise based MutationObserver as per https://stackoverflow.com/a/48514876
+                requestAnimationFrame(function(){
+                    requestAnimationFrame(function(){
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: element.offset().top + 3
+                        }, 500);
+                    });
+                });
             }
         }
     });
@@ -78,6 +88,8 @@ function generateDocumentation(data){
     //         <div class="right">
     //             {{? func.demo}}
     //             <pre data-pending-highlight="true"><code class="lua">{{=func.demo}}</code></pre>
+    //             {{?? true }}
+    //             <div class="code">no example provided</div>
     //             {{?}}
     //         </div>
     //     </div>
@@ -93,7 +105,7 @@ function generateDocumentation(data){
 
     const deviceTemplate = (function anonymous(it
         ) {
-        var out=' <div class="entry left-only i0" data-scroll-to-me="'+(it.id)+'" data-pending-bind="true"> <h2 class="device-header">'+(it.name)+'</h2> <p>Default identifier: <code class="lone">'+(it.identifier)+'</code></p> </div> ';var arr1=it.functions;if(arr1){var func,i1=-1,l1=arr1.length-1;while(i1<l1){func=arr1[i1+=1];out+=' <div class="entry i2"> <div class="left"> <h3 class="code">'+(func.name)+'</h3>  ';if(func.parameters){out+=' <h5>Parameters</h5> <table class="params"> ';var arr2=func.parameters;if(arr2){var param,i2=-1,l2=arr2.length-1;while(i2<l2){param=arr2[i2+=1];out+=' <tr> <td class="code">'+(param.name)+'</td> <td class="code">'+(param.type)+'</td> <td>'+(param.description)+'</td> </tr> ';} } out+=' </table> ';}out+=' ';if(func.return){out+=' <h5>Return</h5> <p>'+(func.return)+'</p> ';}else if(true){out+=' <p>This function does not have a return value</p> ';}out+=' <h5>Description</h5> '+(func.description)+' </div> <div class="right"> ';if(func.demo){out+=' <pre data-pending-highlight="true"><code class="lua">'+(func.demo)+'</code></pre> ';}out+=' </div> </div> ';} } out+=' ';return out;
+        var out=' <div class="entry left-only i0" data-scroll-to-me="'+(it.id)+'" data-pending-bind="true"> <h2 class="device-header">'+(it.name)+'</h2> <p>Default identifier: <code class="lone">'+(it.identifier)+'</code></p> </div> ';var arr1=it.functions;if(arr1){var func,i1=-1,l1=arr1.length-1;while(i1<l1){func=arr1[i1+=1];out+=' <div class="entry i2"> <div class="left"> <h3 class="code">'+(func.name)+'</h3>  ';if(func.parameters){out+=' <h5>Parameters</h5> <table class="params"> ';var arr2=func.parameters;if(arr2){var param,i2=-1,l2=arr2.length-1;while(i2<l2){param=arr2[i2+=1];out+=' <tr> <td class="code">'+(param.name)+'</td> <td class="code">'+(param.type)+'</td> <td>'+(param.description)+'</td> </tr> ';} } out+=' </table> ';}out+=' ';if(func.return){out+=' <h5>Return</h5> <p>'+(func.return)+'</p> ';}else if(true){out+=' <p>This function does not have a return value</p> ';}out+=' <h5>Description</h5> '+(func.description)+' </div> <div class="right"> ';if(func.demo){out+=' <pre data-pending-highlight="true"><code class="lua">'+(func.demo)+'</code></pre> ';}else{out+='<div class="code">no example provided</div>';}out+=' </div> </div> ';} } out+=' ';return out;
         });
 
     // Elements into which to insert the elements once they are generated
