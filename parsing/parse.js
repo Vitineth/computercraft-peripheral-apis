@@ -84,6 +84,13 @@ async function launch() {
 
         // For every function listed in the docs
         for (const [name, docs] of Object.entries(data[device])) {
+            if(docs === '[getMethods only]'){
+                functions.push({
+                    name: `.${name}(...)`,
+                    description: 'no description is available because this function is not provided via getDocs()',
+                });
+                continue;
+            }
             
             // We only know how to parse functions so skip any that aren't like that
             if (!docs.startsWith('function')) {
