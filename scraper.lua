@@ -416,6 +416,14 @@ function scrapePeripheral(name)
     return device.getDocs()
 end
 
+-- If the first arg is "run" it means this is being run either through `wget run ...`
+-- so we need to shuffle up two arguments as it orginally will look like [run, <url>, ...] and we
+-- need it to look like [...]
+if arg[1] == "run" then
+    arg[1] = arg[3]
+    arg[2] = arg[4]
+end
+
 -- Warn that with no arguments the result will just be dumped to the command line
 if arg[1] == nil then
     print("No args passed, printing the result")
