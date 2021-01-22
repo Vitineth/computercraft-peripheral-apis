@@ -182,13 +182,15 @@ async function launch(){
     // Start with mods
     for(const file of modFiles){
         const mod = await loadAndValidateJSON(file, MOD_VALIDATOR);
-        if(mod === false || mod === undefined) return;
+        if(mod === false || mod === undefined) {
+            process.exit(1);
+        }
         
         // Check that this mod does not already exist
         if(Object.prototype.hasOwnProperty.call(mods, mod.identifier)){
             console.log(red('This mod is already defined! '));
             console.log(red('    Stopping processing of all files'));
-            return;
+            process.exit(1);
         }
 
         // And if it doesn't then save it!
@@ -198,13 +200,15 @@ async function launch(){
     // Then do devices. Ids are processed combining the owner and the id to allow for two mods with the same device
     for(const file of deviceFiles){
         const device = await loadAndValidateJSON(file, DEVICE_VALIDATOR);
-        if(device === false || device === undefined) return;
+        if(device === false || device === undefined) {
+            process.exit(1);
+        }
         
         // Check that this mod does not already exist
         if(Object.prototype.hasOwnProperty.call(devices, device.owner + '.' + device.id)){
             console.log(red('This device is already defined! '));
             console.log(red('    Stopping processing of all files'));
-            return;
+            process.exit(1);
         }
 
         // And if it doesn't then save it!
@@ -216,7 +220,7 @@ async function launch(){
         if(!Object.prototype.hasOwnProperty.call(mods, device.owner)){
             console.log(red(`Device ${bold(device.id)} does not have a valid owner. It specified ${bold(device.owner)} but this does not appear in any mod files`));
             console.log(red('    Stopping processing of all files'));
-            return;
+            process.exit(1);
         }
     }
 
@@ -254,6 +258,7 @@ async function launch(){
         console.log(green(bold('Wrote successfully!')));
     } catch (e) {
         console.log(red(`Failed to write file to '${outputPath}'. The error was: ${e.message}`));
+        process.exit(1);
     }
 }
 
