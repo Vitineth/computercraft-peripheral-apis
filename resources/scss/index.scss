@@ -100,13 +100,13 @@ html,body{
     flex-basis: 15%;
     flex-grow: 0;
     flex-shrink: 0;
-    background: #F8F7F8;
     // padding: 30px;
     height: 100%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
     .inner{
         position: fixed;
+        background: #F8F7F8;
         width: 15%;
         top: 0;
         left: 0;
