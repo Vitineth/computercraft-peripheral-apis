@@ -1,6 +1,12 @@
 hljs.initHighlightingOnLoad();
 $(function(){
 
+    $('.scroll-to-top').click(function(){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: 0,
+        }, 500);
+    })
+
     $.get('/resources/spec.json', (data) => {
         generateDocumentation(data);
 
