@@ -100,3 +100,29 @@ const MOD_VALIDATOR = zod.object({
 ## Packaging
 
 The packaging script is managed by the `packaging/` folder which contains a NodeJS project. It will validate the content of all the files before packaging them into the specification files. 
+
+## Scraping Docs
+
+A utility script it provided to be able to fetch the `.getDocs()` call encoded as JSON. The script with no arguments will dump the result to the command line. This will only work with peripherals that can be addressed with their actual IDs (for example attached via a modem). It will skip the named sides because the parsing script expects the result to not include them. It takes one parameter which is a web address to which it will POST the data encoded as JSON. This is designed so you can post it to your own server, grab the data and then run it through the parsing script.
+
+You can run it like this
+
+```
+wget run https://raw.githubusercontent.com/Vitineth/computercraft-peripheral-apis/main/scraper.lua <url>
+```
+
+If you take the JSON it sends and save it to a file (eg `data.json`), you can then run it through the parser like
+
+```
+node parsing/parse.js data.json
+```
+
+Which will spit out data files, you will be prompted to answer any questions it can't determine from the data, along with the name of the devices (automatic generation support for names coming soon).
+
+And if all these files produce successfully, you can then package it all up like this
+
+```
+node packaging/index.js
+```
+
+And if that works, you can open a pull request with your new data and it will get merged in and deployed on to the website!
