@@ -1,9 +1,70 @@
 {
- "id": "reactor_access_hatch",
+ "id": "steam_generator",
  "owner": "ic2",
- "name": "Reactor Access Hatch",
- "defaultIdentifier": "ic2:reactor_access_hatch_(n)",
+ "name": "Steam Generator",
+ "defaultIdentifier": "ic2:steam_generator_(n)",
  "functions": [
+  {
+   "name": ".getTanks(side?: string)",
+   "parameters": [
+    {
+     "name": "side",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all tanks on this side"
+  },
+  {
+   "name": ".pullFluid(fromName: string, limit?: int, fluid?: string)",
+   "parameters": [
+    {
+     "name": "fromName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "fluid",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Pull fluid to this tank from another tank. Returns the amount transferred."
+  },
+  {
+   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+  },
   {
    "name": ".suck(slot?: int, limit?: int)",
    "parameters": [
@@ -20,11 +81,6 @@
    ],
    "return": "int",
    "description": "Suck an item from the ground"
-  },
-  {
-   "name": ".getReactorCore()",
-   "return": "table",
-   "description": "Get a reference to the reactor's core"
   },
   {
    "name": ".getDocs(name?: string)",
@@ -95,6 +151,28 @@
    "description": "Get a list of all available objects which can be transferred to or from"
   },
   {
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
+  },
+  {
+   "name": ".pushFluid(toName: string, limit?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string):int",
+   "description": "Push fluid from this tank to another tank. Returns the amount transferred."
+  },
+  {
    "name": ".drop(slot: int, limit?: int, direction?: string)",
    "parameters": [
     {
@@ -115,38 +193,6 @@
    ],
    "return": "int",
    "description": "Drop an item on the ground. Returns the number of items dropped"
-  },
-  {
-   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
-   "parameters": [
-    {
-     "name": "toName",
-     "type": "string",
-     "description": ""
-    },
-    {
-     "name": "fromSlot",
-     "type": "int",
-     "description": ""
-    },
-    {
-     "name": "limit",
-     "type": "int",
-     "description": "Is optional"
-    },
-    {
-     "name": "toSlot",
-     "type": "int",
-     "description": "Is optional"
-    }
-   ],
-   "return": "int",
-   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
-  },
-  {
-   "name": ".list()",
-   "return": "table",
-   "description": "List all items in this inventory"
   },
   {
    "name": ".getItem(slot: int)",
