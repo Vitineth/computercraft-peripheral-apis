@@ -1,0 +1,30 @@
+{
+ "id": "reactor_redstone_port",
+ "owner": "ic2",
+ "name": "Reactor Redstone Port",
+ "defaultIdentifier": "ic2:reactor_redstone_port_(n)",
+ "functions": [
+  {
+   "name": ".getMetadata()",
+   "return": "table",
+   "description": "Get metadata about this object"
+  },
+  {
+   "name": ".getReactorCore()",
+   "return": "table",
+   "description": "Get a reference to the reactor's core"
+  },
+  {
+   "name": ".getDocs(name?: string)",
+   "parameters": [
+    {
+     "name": "name",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string|table",
+   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+  }
+ ]
+}

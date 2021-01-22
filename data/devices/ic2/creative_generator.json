@@ -1,0 +1,35 @@
+{
+ "id": "creative_generator",
+ "owner": "ic2",
+ "name": "Creative Generator",
+ "defaultIdentifier": "ic2:creative_generator_(n)",
+ "functions": [
+  {
+   "name": ".getMetadata()",
+   "return": "table",
+   "description": "Get metadata about this object"
+  },
+  {
+   "name": ".getOfferedEnergy()",
+   "return": "number",
+   "description": "EU output provided per tick"
+  },
+  {
+   "name": ".getDocs(name?: string)",
+   "parameters": [
+    {
+     "name": "name",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string|table",
+   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+  },
+  {
+   "name": ".getSourceTier()",
+   "return": "int",
+   "description": "The tier of this EU source. 1 = LV, 2 = MV, 3 = HV, 4 = EV etc."
+  }
+ ]
+}
