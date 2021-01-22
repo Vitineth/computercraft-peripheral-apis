@@ -78,6 +78,18 @@ async function launch() {
             })).id;
         }
 
+        if(owner === 'minecraft'){
+            console.log(cyan(`Trying to process ${bold(deviceWithoutOwner)} which identifies as minecraft but this is suspect!`));
+            deviceWithoutOwner = owner;
+            owner = (await prompts({
+                type: 'text',
+                name: 'id',
+                message: 'Device Owner [minecraft]',
+            })).id;
+
+            if(owner === '') owner = 'minecraft';
+        }
+
         console.log(cyan(`Processing ${bold(deviceWithoutOwner)} from ${bold(owner)}`));
 
         const functions = [];
@@ -86,7 +98,7 @@ async function launch() {
         for (const [name, docs] of Object.entries(data[device])) {
             if(docs === '[getMethods only]'){
                 console.log(italic(`the function ${orange(name)} was obtained through a getMethods call so is missing parameters, return and description. ${orange('Please update')}`));
-                
+
                 functions.push({
                     name: `.${name}(...)`,
                     description: 'no description is available because this function is not provided via getDocs()',
