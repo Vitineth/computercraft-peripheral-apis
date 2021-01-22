@@ -1,0 +1,32 @@
+{
+ "id": "computer",
+ "owner": "computercraft",
+ "name": "Computer",
+ "defaultIdentifier": "computercraft:computer_(n)",
+ "functions": [
+  {
+   "name": ".reboot(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getLabel(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".shutdown(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".isOn(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".turnOn(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getID(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  }
+ ]
+}
