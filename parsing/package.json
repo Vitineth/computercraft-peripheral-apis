@@ -1,0 +1,14 @@
+{
+  "name": "parsing",
+  "version": "1.0.0",
+  "description": "Used to parse getDocs() output from lua",
+  "main": "parse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Delaney <vitineth@gmail.com> (https://xiomi.org)",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.4.0"
+  }
+}
