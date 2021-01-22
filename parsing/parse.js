@@ -314,16 +314,24 @@ async function launch() {
         // Don't ever overwrite an existing file. Mainly because existing files could have been tweaked by a person and we don't want
         // to accidentally delete their data. If they want to do that, then they can delete the file.
         // TODO: make this a command line flag
-        if(fs.existsSync(outputFile)){
-            console.log(red(`File ${bold(outputFile)} already exists, not outputting`));
-            continue;
+        if (fs.existsSync(outputFile)) {
+            const overwrite = (await prompts({
+                type: 'confirm',
+                name: 'value',
+                message: 'File exists, overwrite?',
+                initial: false
+            })).value;
+
+            if (!overwrite) {
+                continue;
+            }
         }
 
         // Then try and write out the file printing a message when they do.
-        try{
+        try {
             await fs.promises.writeFile(outputFile, JSON.stringify(deviceOutput, null, 1));
             console.log(italic(`File written at ${bold(cyan(outputFile))}`))
-        }catch(e){
+        } catch (e) {
             console.log(red(`Failed to write device file due to error: ${bold(e.message)}`));
         }
     }
