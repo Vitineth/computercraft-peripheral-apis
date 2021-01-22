@@ -95,6 +95,11 @@ html, body {
   position: relative;
   flex-grow: 1;
   padding: 30px; }
+  .content .device-header {
+    margin-left: -30px;
+    padding: 10px;
+    color: white;
+    background: #171c1c; }
   .content .entry {
     display: flex;
     flex-direction: row; }
