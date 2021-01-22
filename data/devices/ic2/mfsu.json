@@ -1,0 +1,199 @@
+{
+ "id": "mfsu",
+ "owner": "ic2",
+ "name": "MFSU",
+ "defaultIdentifier": "ic2:mfsu_(n)",
+ "functions": [
+  {
+   "name": ".getOfferedEnergy()",
+   "return": "number",
+   "description": "EU output provided per tick"
+  },
+  {
+   "name": ".getEUStored()",
+   "return": "int",
+   "description": "The amount of EU currently stored"
+  },
+  {
+   "name": ".getDocs(name?: string)",
+   "parameters": [
+    {
+     "name": "name",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string|table",
+   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+  },
+  {
+   "name": ".getItemMeta(slot: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "The metadata of the item in the specified slot. The slot number starts from 1."
+  },
+  {
+   "name": ".getEUOutput()",
+   "return": "number",
+   "description": "The maximum EU output per tick"
+  },
+  {
+   "name": ".getEUCapacity()",
+   "return": "int",
+   "description": "The maximum amount of EU that can be stored"
+  },
+  {
+   "name": ".drop(slot: int, limit?: int, direction?: string)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "direction",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Drop an item on the ground. Returns the number of items dropped"
+  },
+  {
+   "name": ".getSourceTier()",
+   "return": "int",
+   "description": "The tier of this EU source. 1 = LV, 2 = MV, 3 = HV, 4 = EV etc."
+  },
+  {
+   "name": ".size()",
+   "return": "int",
+   "description": "The size of the inventory"
+  },
+  {
+   "name": ".getDemandedEnergy()",
+   "return": "number",
+   "description": "The maximum amount of EU that can be received"
+  },
+  {
+   "name": ".suck(slot?: int, limit?: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Suck an item from the ground"
+  },
+  {
+   "name": ".getMetadata()",
+   "return": "table",
+   "description": "Get metadata about this object"
+  },
+  {
+   "name": ".pullItems(fromName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "fromName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Pull items to this inventory from another inventory. Returns the amount transferred."
+  },
+  {
+   "name": ".getTransferLocations(location?: string)",
+   "parameters": [
+    {
+     "name": "location",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all available objects which can be transferred to or from"
+  },
+  {
+   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+  },
+  {
+   "name": ".getSinkTier()",
+   "return": "int",
+   "description": "The tier of this EU sink. 1 = LV, 2 = MV, 3 = HV, 4 = EV etc."
+  },
+  {
+   "name": ".getItem(slot: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "The item in the specified slot. The slot number starts from 1."
+  },
+  {
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
+  }
+ ]
+}
