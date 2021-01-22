@@ -147,7 +147,7 @@ function generateDocumentation(data){
 
         e.click(function(){
             $([document.documentElement, document.body]).animate({
-                scrollTop: $("[data-scroll-to-me='" + e.attr('data-scroll-to') + "']").offset().top
+                scrollTop: $("[data-scroll-to-me='" + e.attr('data-scroll-to') + "']").offset().top + 3
             }, 500);
         });
 
