@@ -17,11 +17,15 @@ $(function(){
                 // Adding a small delay to let the page render itself properly because there is a massive dom change
                 // this is not ideal and may not work on very slow browsers. Hopefully this will work, its a bit of a
                 // hacky workaround right now
-                setTimeout(function(){
-                    $([document.documentElement, document.body]).animate({
-                        scrollTop: element.offset().top + 3
-                    }, 500);
-                }, 500);
+                // Source: https://forum.freecodecamp.org/t/how-to-make-js-wait-until-dom-is-updated/122067/3
+                // TODO: migrate to promise based MutationObserver as per https://stackoverflow.com/a/48514876
+                requestAnimationFrame(function(){
+                    requestAnimationFrame(function(){
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: element.offset().top + 3
+                        }, 500);
+                    });
+                });
             }
         }
     });
