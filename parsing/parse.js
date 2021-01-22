@@ -11,7 +11,7 @@ const orange = (data) => `\u001b[33m${String(data)}\u001b[39m`;
 const cyan = (data) => `\u001b[36m${String(data)}\u001b[39m`;
 
 const AUTO_SWAP_ID_REGEX = /^([a-zA-Z0-9_-]+):([a-zA-Z0-9_-]+)_[0-9]+/i;
-const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+/i;
+const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:?[a-zA-Z0-9_-]+/i;
 
 // If a command line arg is given, load from the file given by the path
 // If none is given, read from stdin IF its coming from a pipe (not a tty)
@@ -66,7 +66,18 @@ async function launch() {
 
         // Split out the owner (ie ic2) and the name of the device (ie macerator_0) and print it out to give context to whats happening
         // and realistically where we fail
-        const [owner, deviceWithoutOwner] = device.split(':');
+        let [owner, deviceWithoutOwner] = device.split(':');
+
+        if(deviceWithoutOwner === undefined){
+            console.log(cyan(`Trying to process ${bold(owner)} without an owner!`));
+            deviceWithoutOwner = owner;
+            owner = (await prompts({
+                type: 'text',
+                name: 'id',
+                message: 'Device Owner',
+            })).id;
+        }
+
         console.log(cyan(`Processing ${bold(deviceWithoutOwner)} from ${bold(owner)}`));
 
         const functions = [];
@@ -244,6 +255,10 @@ async function launch() {
             name: 'id',
             message: 'Device Name',
         })).id;
+
+        if(name === "quit"){
+            process.exit(1);
+        }
 
         // Build up the device output in the format required by the packaging script ready to be written
         const deviceOutput = {

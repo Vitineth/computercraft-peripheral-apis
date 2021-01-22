@@ -1,0 +1,25 @@
+{
+ "id": "digital_receiver_box",
+ "owner": "computronics",
+ "name": "Digital Signal Receiver Box",
+ "defaultIdentifier": "digital_receiver_box_(n)",
+ "functions": [
+  {
+   "name": ".getMetadata()",
+   "return": "table",
+   "description": "Get metadata about this object"
+  },
+  {
+   "name": ".getDocs(name?: string)",
+   "parameters": [
+    {
+     "name": "name",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string|table",
+   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+  }
+ ]
+}
