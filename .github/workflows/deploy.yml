@@ -27,12 +27,6 @@ jobs:
     - name: 📦 Package Data Files
       run: |
         node packaging/index.js
-      
-    - name: ➰ Compile CSS from SCSS files
-      uses: gha-utilities/sass-build@v0.2.7
-      with:
-        source: resources/scss/index.scss
-        destination: resources/css/index.css
 
     - name: 🪝 Trigger Webhook
       uses: distributhor/workflow-webhook@v1
