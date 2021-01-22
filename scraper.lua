@@ -412,8 +412,19 @@ function scrapePeripheral(name)
         return
     end
 
-    -- Otherwise just return this table
-    return device.getDocs()
+    -- We need to wrap in getMethods because getDocs is not complete in some mods (ie computronics)
+    -- This uses the description [getMethods only] which is picked up by the parser script and formatted in specific way
+    local documentation = device.getDocs()
+    local methods = peripheral.getMethods(name)
+
+    for index, method in pairs(methods) do
+        if documentation[method] == nil then
+            documentation[method] = "[getMethods only]"
+        end
+    end
+
+    -- Then return the bundled data
+    return documentation
 end
 
 -- If the first arg is "run" it means this is being run either through `wget run ...`

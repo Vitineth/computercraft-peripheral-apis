@@ -10,8 +10,9 @@ const italic = (data) => `\u001b[3m${String(data)}\u001b[23m`;
 const orange = (data) => `\u001b[33m${String(data)}\u001b[39m`;
 const cyan = (data) => `\u001b[36m${String(data)}\u001b[39m`;
 
-const AUTO_SWAP_ID_REGEX = /^([a-zA-Z0-9_-]+):([a-zA-Z0-9_-]+)_[0-9]+/i;
-const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:?[a-zA-Z0-9_-]+/i;
+const AUTO_SWAP_ID_REGEX = /^([a-zA-Z0-9_-]+):([a-zA-Z0-9_-]+)_[0-9]+$/i;
+const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:?[a-zA-Z0-9_-]+$/i;
+const SIMPLE_AUTO_REGEX = /^([a-zA-Z0-9_-]+)_[0-9]+$/i;
 
 // If a command line arg is given, load from the file given by the path
 // If none is given, read from stdin IF its coming from a pipe (not a tty)
@@ -68,7 +69,7 @@ async function launch() {
         // and realistically where we fail
         let [owner, deviceWithoutOwner] = device.split(':');
 
-        if(deviceWithoutOwner === undefined){
+        if (deviceWithoutOwner === undefined) {
             console.log(cyan(`Trying to process ${bold(owner)} without an owner!`));
             deviceWithoutOwner = owner;
             owner = (await prompts({
@@ -78,13 +79,43 @@ async function launch() {
             })).id;
         }
 
+        if (owner === 'minecraft') {
+            console.log(cyan(`Trying to process ${bold(deviceWithoutOwner)} which identifies as minecraft but this is suspect!`));
+            deviceWithoutOwner = owner;
+            owner = (await prompts({
+                type: 'text',
+                name: 'id',
+                message: 'Device Owner [minecraft]',
+            })).id;
+
+            if (owner === '') owner = 'minecraft';
+        }
+
         console.log(cyan(`Processing ${bold(deviceWithoutOwner)} from ${bold(owner)}`));
 
         const functions = [];
 
         // For every function listed in the docs
         for (const [name, docs] of Object.entries(data[device])) {
-            
+            if (name === 'getDocs') {
+                console.log(italic('skipping getDocs'));
+                continue;
+            }
+            if (name === 'getMetadata') {
+                console.log(italic('skipping getMetadata'));
+                continue;
+            }
+
+            if (docs === '[getMethods only]') {
+                console.log(italic(`the function ${orange(name)} was obtained through a getMethods call so is missing parameters, return and description. ${orange('Please update')}`));
+
+                functions.push({
+                    name: `.${name}(...)`,
+                    description: 'no description is available because this function is not provided via getDocs()',
+                });
+                continue;
+            }
+
             // We only know how to parse functions so skip any that aren't like that
             if (!docs.startsWith('function')) {
                 console.log(orange(`cannot parse ${bold(name)} because it is not a function`));
@@ -229,12 +260,20 @@ async function launch() {
 
         // Certain IDs we can automatically process, namely those in the format `mod:some_device_0`
         // So if it matches, extract the device name and automatically build up the generated device name
-        if(AUTO_SWAP_ID_REGEX.test(device)){
+        if (AUTO_SWAP_ID_REGEX.test(device)) {
             const [, ownerID, deviceName] = AUTO_SWAP_ID_REGEX.exec(device);
 
             deviceID = deviceName;
             defaultID = ownerID + ':' + deviceID + '_(n)';
-        }else{
+        } else if (SIMPLE_AUTO_REGEX.test(device)){
+            
+            const [,deviceName] = SIMPLE_AUTO_REGEX.exec(device);
+            
+            deviceID = deviceName;
+            defaultID = owner + ':' + deviceID + '_(n)';
+
+            console.log(italic(`matches the simple regex, produces id ${deviceID} and the default id of ${defaultID}`));
+        } else {
             // Otherwise we need to prompt the user for the values that they want to use for this script
             defaultID = (await prompts({
                 type: 'text',
@@ -256,7 +295,7 @@ async function launch() {
             message: 'Device Name',
         })).id;
 
-        if(name === "quit"){
+        if (name === "quit") {
             process.exit(1);
         }
 
@@ -274,15 +313,15 @@ async function launch() {
 
         // Try and make all the folders to this point. If it had to create the mod folder, warn them that they will now have to make a mod file
         // for their definition to actually work
-        try{
+        try {
             const created = fs.mkdirSync(outputFolder, {
                 recursive: true,
             });
 
-            if(created !== undefined)console.log(orange(`Folder had to be created for ${bold(owner)}, you may need to now create a mod file`));
-        }catch(e){
+            if (created !== undefined) console.log(orange(`Folder had to be created for ${bold(owner)}, you may need to now create a mod file`));
+        } catch (e) {
             // Folders already existing don't matter, any other errors do
-            if(e.code !== 'EEXIST'){
+            if (e.code !== 'EEXIST') {
                 throw e;
             }
         }
@@ -293,16 +332,24 @@ async function launch() {
         // Don't ever overwrite an existing file. Mainly because existing files could have been tweaked by a person and we don't want
         // to accidentally delete their data. If they want to do that, then they can delete the file.
         // TODO: make this a command line flag
-        if(fs.existsSync(outputFile)){
-            console.log(red(`File ${bold(outputFile)} already exists, not outputting`));
-            continue;
+        if (fs.existsSync(outputFile)) {
+            const overwrite = (await prompts({
+                type: 'confirm',
+                name: 'value',
+                message: 'File exists, overwrite?',
+                initial: false
+            })).value;
+
+            if (!overwrite) {
+                continue;
+            }
         }
 
         // Then try and write out the file printing a message when they do.
-        try{
+        try {
             await fs.promises.writeFile(outputFile, JSON.stringify(deviceOutput, null, 1));
             console.log(italic(`File written at ${bold(cyan(outputFile))}`))
-        }catch(e){
+        } catch (e) {
             console.log(red(`Failed to write device file due to error: ${bold(e.message)}`));
         }
     }
