@@ -1,0 +1,7 @@
+{
+ "id": "activator",
+ "owner": "stevescarts",
+ "name": "Module Toggler",
+ "defaultIdentifier": "minecraft:activator_(n)",
+ "functions": []
+}

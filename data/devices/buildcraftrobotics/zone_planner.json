@@ -1,0 +1,7 @@
+{
+ "id": "zone_planner",
+ "owner": "buildcraftrobotics",
+ "name": "Zone Planner",
+ "defaultIdentifier": "buildcraftrobotics:zone_planner_(n)",
+ "functions": []
+}

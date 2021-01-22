@@ -1,17 +1,40 @@
 {
- "id": "speech_box",
- "owner": "computronics",
- "name": "Speech Box",
- "defaultIdentifier": "computronics:speech_box_(n)",
+ "id": "average_counter",
+ "owner": "energycontrol",
+ "name": "Average Counter",
+ "defaultIdentifier": "energycontrol:average_counter_(n)",
  "functions": [
   {
-   "name": ".stop(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".getDemandedEnergy()",
+   "return": "number",
+   "description": "The maximum amount of EU that can be received"
   },
   {
-   "name": ".list()",
-   "return": "table",
-   "description": "List all items in this inventory"
+   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
   },
   {
    "name": ".suck(slot?: int, limit?: int)",
@@ -31,12 +54,31 @@
    "description": "Suck an item from the ground"
   },
   {
-   "name": ".say(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".getSinkTier()",
+   "return": "int",
+   "description": "The tier of this EU sink. 1 = LV, 2 = MV, 3 = HV, 4 = EV etc."
   },
   {
-   "name": ".isProcessing(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".drop(slot: int, limit?: int, direction?: string)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "direction",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Drop an item on the ground. Returns the number of items dropped"
   },
   {
    "name": ".getItemMeta(slot: int)",
@@ -90,57 +132,19 @@
    "description": "Get a list of all available objects which can be transferred to or from"
   },
   {
-   "name": ".drop(slot: int, limit?: int, direction?: string)",
-   "parameters": [
-    {
-     "name": "slot",
-     "type": "int",
-     "description": ""
-    },
-    {
-     "name": "limit",
-     "type": "int",
-     "description": "Is optional"
-    },
-    {
-     "name": "direction",
-     "type": "string",
-     "description": "Is optional"
-    }
-   ],
-   "return": "int",
-   "description": "Drop an item on the ground. Returns the number of items dropped"
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
   },
   {
-   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
-   "parameters": [
-    {
-     "name": "toName",
-     "type": "string",
-     "description": ""
-    },
-    {
-     "name": "fromSlot",
-     "type": "int",
-     "description": ""
-    },
-    {
-     "name": "limit",
-     "type": "int",
-     "description": "Is optional"
-    },
-    {
-     "name": "toSlot",
-     "type": "int",
-     "description": "Is optional"
-    }
-   ],
+   "name": ".getSourceTier()",
    "return": "int",
-   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+   "description": "The tier of this EU source. 1 = LV, 2 = MV, 3 = HV, 4 = EV etc."
   },
   {
-   "name": ".setVolume(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".getOfferedEnergy()",
+   "return": "number",
+   "description": "EU output provided per tick"
   },
   {
    "name": ".getItem(slot: int)",
