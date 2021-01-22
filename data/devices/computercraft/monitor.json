@@ -1,0 +1,112 @@
+{
+ "id": "monitor",
+ "owner": "computercraft",
+ "name": "Monitor",
+ "defaultIdentifier": "computercraft:monitor_(n)",
+ "functions": [
+  {
+   "name": ".getCursorPos(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".isColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getBackgroundColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getTextColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".scroll(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getPaletteColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".blit(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setTextColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setTextColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getSize(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setPaletteColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getTextScale(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setCursorPos(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".write(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".clear(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".clearLine(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setBackgroundColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".isColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setCursorBlink(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getTextColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getBackgroundColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getPaletteColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setTextScale(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setPaletteColor(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setBackgroundColour(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getCursorBlink(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  }
+ ]
+}

@@ -1,0 +1,271 @@
+{
+ "id": "analyzer",
+ "owner": "forestry",
+ "name": "Analyzer",
+ "defaultIdentifier": "forestry:analyzer_(n)",
+ "functions": [
+  {
+   "name": ".filterModules(names: string...)",
+   "parameters": [
+    {
+     "name": "names",
+     "type": "string...",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "Gets the methods which require these modules"
+  },
+  {
+   "name": ".getSpeciesList(root: string)",
+   "parameters": [
+    {
+     "name": "root",
+     "type": "string",
+     "description": ""
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all species in the given species root"
+  },
+  {
+   "name": ".hasModule(module: string)",
+   "parameters": [
+    {
+     "name": "module",
+     "type": "string",
+     "description": ""
+    }
+   ],
+   "return": "boolean",
+   "description": "Checks whether a module is available"
+  },
+  {
+   "name": ".getItemMeta(slot: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "The metadata of the item in the specified slot. The slot number starts from 1."
+  },
+  {
+   "name": ".getSpeciesRoots()",
+   "return": "table",
+   "description": "Get a list of all species roots"
+  },
+  {
+   "name": ".drop(slot: int, limit?: int, direction?: string)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "direction",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Drop an item on the ground. Returns the number of items dropped"
+  },
+  {
+   "name": ".getEnergyStored()",
+   "return": "int",
+   "description": "The amount of energy currently stored"
+  },
+  {
+   "name": ".pushFluid(toName: string, limit?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string):int",
+   "description": "Push fluid from this tank to another tank. Returns the amount transferred."
+  },
+  {
+   "name": ".size()",
+   "return": "int",
+   "description": "The size of the inventory"
+  },
+  {
+   "name": ".listModules()",
+   "return": "table",
+   "description": "Lists all modules available"
+  },
+  {
+   "name": ".getMutationsList(root: string)",
+   "parameters": [
+    {
+     "name": "root",
+     "type": "string",
+     "description": ""
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all mutations in the given species root"
+  },
+  {
+   "name": ".pullFluid(fromName: string, limit?: int, fluid?: string)",
+   "parameters": [
+    {
+     "name": "fromName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "fluid",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Pull fluid to this tank from another tank. Returns the amount transferred."
+  },
+  {
+   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+  },
+  {
+   "name": ".getEnergyCapacity()",
+   "return": "int",
+   "description": "The maximum amount of energy that can be stored"
+  },
+  {
+   "name": ".pullItems(fromName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "fromName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Pull items to this inventory from another inventory. Returns the amount transferred."
+  },
+  {
+   "name": ".getTransferLocations(location?: string)",
+   "parameters": [
+    {
+     "name": "location",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all available objects which can be transferred to or from"
+  },
+  {
+   "name": ".getTanks(side?: string)",
+   "parameters": [
+    {
+     "name": "side",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all tanks on this side"
+  },
+  {
+   "name": ".suck(slot?: int, limit?: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Suck an item from the ground"
+  },
+  {
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
+  },
+  {
+   "name": ".getItem(slot: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "The item in the specified slot. The slot number starts from 1."
+  },
+  {
+   "name": ".getErrors()",
+   "return": "table",
+   "description": "Get any errors preventing operation"
+  }
+ ]
+}
