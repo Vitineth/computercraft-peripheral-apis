@@ -96,6 +96,15 @@ async function launch() {
 
         // For every function listed in the docs
         for (const [name, docs] of Object.entries(data[device])) {
+            if (name === 'getDocs') {
+                console.log(italic('skipping getDocs'));
+                continue;
+            }
+            if (name === 'getMetadata') {
+                console.log(italic('skipping getMetadata'));
+                continue;
+            }
+
             if (docs === '[getMethods only]') {
                 console.log(italic(`the function ${orange(name)} was obtained through a getMethods call so is missing parameters, return and description. ${orange('Please update')}`));
 
