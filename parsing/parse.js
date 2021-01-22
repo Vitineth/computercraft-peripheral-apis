@@ -68,7 +68,7 @@ async function launch() {
         // and realistically where we fail
         let [owner, deviceWithoutOwner] = device.split(':');
 
-        if(deviceWithoutOwner === undefined){
+        if (deviceWithoutOwner === undefined) {
             console.log(cyan(`Trying to process ${bold(owner)} without an owner!`));
             deviceWithoutOwner = owner;
             owner = (await prompts({
@@ -78,7 +78,7 @@ async function launch() {
             })).id;
         }
 
-        if(owner === 'minecraft'){
+        if (owner === 'minecraft') {
             console.log(cyan(`Trying to process ${bold(deviceWithoutOwner)} which identifies as minecraft but this is suspect!`));
             deviceWithoutOwner = owner;
             owner = (await prompts({
@@ -87,7 +87,7 @@ async function launch() {
                 message: 'Device Owner [minecraft]',
             })).id;
 
-            if(owner === '') owner = 'minecraft';
+            if (owner === '') owner = 'minecraft';
         }
 
         console.log(cyan(`Processing ${bold(deviceWithoutOwner)} from ${bold(owner)}`));
@@ -96,7 +96,7 @@ async function launch() {
 
         // For every function listed in the docs
         for (const [name, docs] of Object.entries(data[device])) {
-            if(docs === '[getMethods only]'){
+            if (docs === '[getMethods only]') {
                 console.log(italic(`the function ${orange(name)} was obtained through a getMethods call so is missing parameters, return and description. ${orange('Please update')}`));
 
                 functions.push({
@@ -105,7 +105,7 @@ async function launch() {
                 });
                 continue;
             }
-            
+
             // We only know how to parse functions so skip any that aren't like that
             if (!docs.startsWith('function')) {
                 console.log(orange(`cannot parse ${bold(name)} because it is not a function`));
@@ -250,12 +250,12 @@ async function launch() {
 
         // Certain IDs we can automatically process, namely those in the format `mod:some_device_0`
         // So if it matches, extract the device name and automatically build up the generated device name
-        if(AUTO_SWAP_ID_REGEX.test(device)){
+        if (AUTO_SWAP_ID_REGEX.test(device)) {
             const [, ownerID, deviceName] = AUTO_SWAP_ID_REGEX.exec(device);
 
             deviceID = deviceName;
             defaultID = ownerID + ':' + deviceID + '_(n)';
-        }else{
+        } else {
             // Otherwise we need to prompt the user for the values that they want to use for this script
             defaultID = (await prompts({
                 type: 'text',
@@ -277,7 +277,7 @@ async function launch() {
             message: 'Device Name',
         })).id;
 
-        if(name === "quit"){
+        if (name === "quit") {
             process.exit(1);
         }
 
@@ -295,15 +295,15 @@ async function launch() {
 
         // Try and make all the folders to this point. If it had to create the mod folder, warn them that they will now have to make a mod file
         // for their definition to actually work
-        try{
+        try {
             const created = fs.mkdirSync(outputFolder, {
                 recursive: true,
             });
 
-            if(created !== undefined)console.log(orange(`Folder had to be created for ${bold(owner)}, you may need to now create a mod file`));
-        }catch(e){
+            if (created !== undefined) console.log(orange(`Folder had to be created for ${bold(owner)}, you may need to now create a mod file`));
+        } catch (e) {
             // Folders already existing don't matter, any other errors do
-            if(e.code !== 'EEXIST'){
+            if (e.code !== 'EEXIST') {
                 throw e;
             }
         }
