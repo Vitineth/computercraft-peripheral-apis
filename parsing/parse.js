@@ -10,8 +10,9 @@ const italic = (data) => `\u001b[3m${String(data)}\u001b[23m`;
 const orange = (data) => `\u001b[33m${String(data)}\u001b[39m`;
 const cyan = (data) => `\u001b[36m${String(data)}\u001b[39m`;
 
-const AUTO_SWAP_ID_REGEX = /^([a-zA-Z0-9_-]+):([a-zA-Z0-9_-]+)_[0-9]+/i;
-const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:?[a-zA-Z0-9_-]+/i;
+const AUTO_SWAP_ID_REGEX = /^([a-zA-Z0-9_-]+):([a-zA-Z0-9_-]+)_[0-9]+$/i;
+const DEVICE_NAME_REGEX = /^[a-zA-Z0-9_-]+:?[a-zA-Z0-9_-]+$/i;
+const SIMPLE_AUTO_REGEX = /^([a-zA-Z0-9_-]+)_[0-9]+$/i;
 
 // If a command line arg is given, load from the file given by the path
 // If none is given, read from stdin IF its coming from a pipe (not a tty)
@@ -264,6 +265,14 @@ async function launch() {
 
             deviceID = deviceName;
             defaultID = ownerID + ':' + deviceID + '_(n)';
+        } else if (SIMPLE_AUTO_REGEX.test(device)){
+            
+            const [,deviceName] = SIMPLE_AUTO_REGEX.exec(device);
+            
+            deviceID = deviceName;
+            defaultID = owner + ':' + deviceID + '_(n)';
+
+            console.log(italic(`matches the simple regex, produces id ${deviceID} and the default id of ${defaultID}`));
         } else {
             // Otherwise we need to prompt the user for the values that they want to use for this script
             defaultID = (await prompts({
