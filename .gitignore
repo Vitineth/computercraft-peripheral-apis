@@ -122,3 +122,6 @@ resources/fonts/*
 
 resources/vendor/*
 !resources/vendor/vendor-files.md
+
+resources/css/*
+resources/spec.json
