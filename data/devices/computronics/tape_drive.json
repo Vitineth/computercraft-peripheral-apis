@@ -2,8 +2,80 @@
  "id": "tape_drive",
  "owner": "computronics",
  "name": "Tape Drive",
- "defaultIdentifier": "tape_drive_(n)",
+ "defaultIdentifier": "computronics:tape_drive_(n)",
  "functions": [
+  {
+   "name": ".getItemMeta(slot: int)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    }
+   ],
+   "return": "table|nil",
+   "description": "The metadata of the item in the specified slot. The slot number starts from 1."
+  },
+  {
+   "name": ".setLabel(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getLabel(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".drop(slot: int, limit?: int, direction?: string)",
+   "parameters": [
+    {
+     "name": "slot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "direction",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Drop an item on the ground. Returns the number of items dropped"
+  },
+  {
+   "name": ".stop(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".isReady(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".play(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".size()",
+   "return": "int",
+   "description": "The size of the inventory"
+  },
+  {
+   "name": ".getSize(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
+  },
+  {
+   "name": ".write(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
   {
    "name": ".suck(slot?: int, limit?: int)",
    "parameters": [
@@ -22,33 +94,20 @@
    "description": "Suck an item from the ground"
   },
   {
-   "name": ".getDocs(name?: string)",
-   "parameters": [
-    {
-     "name": "name",
-     "type": "string",
-     "description": "Is optional"
-    }
-   ],
-   "return": "string|table",
-   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+   "name": ".isEnd(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
-   "name": ".getItemMeta(slot: int)",
-   "parameters": [
-    {
-     "name": "slot",
-     "type": "int",
-     "description": ""
-    }
-   ],
-   "return": "table|nil",
-   "description": "The metadata of the item in the specified slot. The slot number starts from 1."
+   "name": ".setSpeed(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
-   "name": ".getMetadata()",
-   "return": "table",
-   "description": "Get metadata about this object"
+   "name": ".getState(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setVolume(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
    "name": ".pullItems(fromName: string, fromSlot: int, limit?: int, toSlot?: int)",
@@ -90,26 +149,28 @@
    "description": "Get a list of all available objects which can be transferred to or from"
   },
   {
-   "name": ".drop(slot: int, limit?: int, direction?: string)",
+   "name": ".read(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getPosition(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".seek(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getItem(slot: int)",
    "parameters": [
     {
      "name": "slot",
      "type": "int",
      "description": ""
-    },
-    {
-     "name": "limit",
-     "type": "int",
-     "description": "Is optional"
-    },
-    {
-     "name": "direction",
-     "type": "string",
-     "description": "Is optional"
     }
    ],
-   "return": "int",
-   "description": "Drop an item on the ground. Returns the number of items dropped"
+   "return": "table|nil",
+   "description": "The item in the specified slot. The slot number starts from 1."
   },
   {
    "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
@@ -137,28 +198,6 @@
    ],
    "return": "int",
    "description": "Push items from this inventory to another inventory. Returns the amount transferred."
-  },
-  {
-   "name": ".list()",
-   "return": "table",
-   "description": "List all items in this inventory"
-  },
-  {
-   "name": ".getItem(slot: int)",
-   "parameters": [
-    {
-     "name": "slot",
-     "type": "int",
-     "description": ""
-    }
-   ],
-   "return": "table|nil",
-   "description": "The item in the specified slot. The slot number starts from 1."
-  },
-  {
-   "name": ".size()",
-   "return": "int",
-   "description": "The size of the inventory"
   }
  ]
 }

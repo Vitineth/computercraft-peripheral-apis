@@ -1,17 +1,20 @@
 {
- "id": "speech_box",
- "owner": "computronics",
- "name": "Speech Box",
- "defaultIdentifier": "computronics:speech_box_(n)",
+ "id": "liquid",
+ "owner": "stevescarts",
+ "name": "Liquid Manager",
+ "defaultIdentifier": "minecraft:liquid_(n)",
  "functions": [
   {
-   "name": ".stop(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
-  },
-  {
-   "name": ".list()",
+   "name": ".getTanks(side?: string)",
+   "parameters": [
+    {
+     "name": "side",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
    "return": "table",
-   "description": "List all items in this inventory"
+   "description": "Get a list of all tanks on this side"
   },
   {
    "name": ".suck(slot?: int, limit?: int)",
@@ -29,14 +32,6 @@
    ],
    "return": "int",
    "description": "Suck an item from the ground"
-  },
-  {
-   "name": ".say(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
-  },
-  {
-   "name": ".isProcessing(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
    "name": ".getItemMeta(slot: int)",
@@ -139,8 +134,9 @@
    "description": "Push items from this inventory to another inventory. Returns the amount transferred."
   },
   {
-   "name": ".setVolume(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
   },
   {
    "name": ".getItem(slot: int)",

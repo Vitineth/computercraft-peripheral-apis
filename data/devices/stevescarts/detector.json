@@ -1,0 +1,7 @@
+{
+ "id": "detector",
+ "owner": "stevescarts",
+ "name": "Detector (*Manager*/Unit/Station/Junction/Redstone Unit)",
+ "defaultIdentifier": "minecraft:detector_(n)",
+ "functions": []
+}

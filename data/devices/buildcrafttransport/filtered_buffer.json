@@ -1,18 +1,9 @@
 {
- "id": "speech_box",
- "owner": "computronics",
- "name": "Speech Box",
- "defaultIdentifier": "computronics:speech_box_(n)",
+ "id": "filtered_buffer",
+ "owner": "buildcrafttransport",
+ "name": "Filtered Buffer",
+ "defaultIdentifier": "buildcrafttransport:filtered_buffer_(n)",
  "functions": [
-  {
-   "name": ".stop(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
-  },
-  {
-   "name": ".list()",
-   "return": "table",
-   "description": "List all items in this inventory"
-  },
   {
    "name": ".suck(slot?: int, limit?: int)",
    "parameters": [
@@ -29,14 +20,6 @@
    ],
    "return": "int",
    "description": "Suck an item from the ground"
-  },
-  {
-   "name": ".say(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
-  },
-  {
-   "name": ".isProcessing(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
    "name": ".getItemMeta(slot: int)",
@@ -139,8 +122,9 @@
    "description": "Push items from this inventory to another inventory. Returns the amount transferred."
   },
   {
-   "name": ".setVolume(...)",
-   "description": "no description is available because this function is not provided via getDocs()"
+   "name": ".list()",
+   "return": "table",
+   "description": "List all items in this inventory"
   },
   {
    "name": ".getItem(slot: int)",

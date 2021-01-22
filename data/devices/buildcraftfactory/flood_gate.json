@@ -1,0 +1,71 @@
+{
+ "id": "flood_gate",
+ "owner": "buildcraftfactory",
+ "name": "Flood Gate",
+ "defaultIdentifier": "buildcraftfactory:flood_gate_(n)",
+ "functions": [
+  {
+   "name": ".getTransferLocations(location?: string)",
+   "parameters": [
+    {
+     "name": "location",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all available objects which can be transferred to or from"
+  },
+  {
+   "name": ".pullFluid(fromName: string, limit?: int, fluid?: string)",
+   "parameters": [
+    {
+     "name": "fromName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "fluid",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Pull fluid to this tank from another tank. Returns the amount transferred."
+  },
+  {
+   "name": ".pushFluid(toName: string, limit?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "string):int",
+   "description": "Push fluid from this tank to another tank. Returns the amount transferred."
+  },
+  {
+   "name": ".getTanks(side?: string)",
+   "parameters": [
+    {
+     "name": "side",
+     "type": "string",
+     "description": "Is optional"
+    }
+   ],
+   "return": "table",
+   "description": "Get a list of all tanks on this side"
+  }
+ ]
+}

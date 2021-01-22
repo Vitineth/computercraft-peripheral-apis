@@ -1,25 +1,28 @@
 {
  "id": "digital_controller_box",
  "owner": "computronics",
- "name": "Digital Controller Box",
- "defaultIdentifier": "digital_controller_box_(n)",
+ "name": "Digital Signal Controller Box",
+ "defaultIdentifier": "computronics:digital_controller_box_(n)",
  "functions": [
   {
-   "name": ".getMetadata()",
-   "return": "table",
-   "description": "Get metadata about this object"
+   "name": ".setEveryAspect(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
-   "name": ".getDocs(name?: string)",
-   "parameters": [
-    {
-     "name": "name",
-     "type": "string",
-     "description": "Is optional"
-    }
-   ],
-   "return": "string|table",
-   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+   "name": ".setAspect(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".unpair(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".getSignalNames(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".aspects(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   }
  ]
 }

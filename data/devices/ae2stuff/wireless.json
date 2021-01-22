@@ -1,0 +1,57 @@
+{
+ "id": "wireless",
+ "owner": "ae2stuff",
+ "name": "Wireless Connector",
+ "defaultIdentifier": "ae2stuff:wireless_(n)",
+ "functions": [
+  {
+   "name": ".getNodeEnergyUsage()",
+   "return": "number",
+   "description": "Get the energy usage of this AE node"
+  },
+  {
+   "name": ".findItem(item: string|table)",
+   "parameters": [
+    {
+     "name": "item",
+     "type": "string|table",
+     "description": ""
+    }
+   ],
+   "return": "table",
+   "description": "Search for an item in the network. You can specify the item as a string, with or without the damage value ('minecraft:stone' or 'minecraft:stone@0') or as a table with 'name', 'damage' and 'nbthash' fields. You must specify the 'name', but you can leave the other fields empty."
+  },
+  {
+   "name": ".findItems(item: string|table)",
+   "parameters": [
+    {
+     "name": "item",
+     "type": "string|table",
+     "description": ""
+    }
+   ],
+   "return": "table",
+   "description": "Search all items in the network. You can specify the item as a string, with or without the damage value ('minecraft:stone' or 'minecraft:stone@0') or as a table with 'name', 'damage' and 'nbthash' fields. You must specify the 'name', but you can leave the other fields empty."
+  },
+  {
+   "name": ".listAvailableItems()",
+   "return": "table",
+   "description": "List all items which are stored in the network"
+  },
+  {
+   "name": ".getNetworkEnergyUsage()",
+   "return": "number",
+   "description": "Get the energy usage of this AE network"
+  },
+  {
+   "name": ".getCraftingCPUs()",
+   "return": "table",
+   "description": "List all crafting cpus in the network"
+  },
+  {
+   "name": ".getNetworkEnergyStored()",
+   "return": "int",
+   "description": "Get the energy stored usage in this AE network"
+  }
+ ]
+}

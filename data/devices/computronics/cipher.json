@@ -2,8 +2,39 @@
  "id": "cipher",
  "owner": "computronics",
  "name": "Cipher Block",
- "defaultIdentifier": "cipher_(n)",
+ "defaultIdentifier": "computronics:cipher_(n)",
  "functions": [
+  {
+   "name": ".encrypt(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
+   "parameters": [
+    {
+     "name": "toName",
+     "type": "string",
+     "description": ""
+    },
+    {
+     "name": "fromSlot",
+     "type": "int",
+     "description": ""
+    },
+    {
+     "name": "limit",
+     "type": "int",
+     "description": "Is optional"
+    },
+    {
+     "name": "toSlot",
+     "type": "int",
+     "description": "Is optional"
+    }
+   ],
+   "return": "int",
+   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+  },
   {
    "name": ".suck(slot?: int, limit?: int)",
    "parameters": [
@@ -22,16 +53,12 @@
    "description": "Suck an item from the ground"
   },
   {
-   "name": ".getDocs(name?: string)",
-   "parameters": [
-    {
-     "name": "name",
-     "type": "string",
-     "description": "Is optional"
-    }
-   ],
-   "return": "string|table",
-   "description": "Get the documentation for all functions or the function specified. Errors if the function cannot be found."
+   "name": ".isLocked(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
+  },
+  {
+   "name": ".setLocked(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
    "name": ".getItemMeta(slot: int)",
@@ -44,11 +71,6 @@
    ],
    "return": "table|nil",
    "description": "The metadata of the item in the specified slot. The slot number starts from 1."
-  },
-  {
-   "name": ".getMetadata()",
-   "return": "table",
-   "description": "Get metadata about this object"
   },
   {
    "name": ".pullItems(fromName: string, fromSlot: int, limit?: int, toSlot?: int)",
@@ -112,31 +134,8 @@
    "description": "Drop an item on the ground. Returns the number of items dropped"
   },
   {
-   "name": ".pushItems(toName: string, fromSlot: int, limit?: int, toSlot?: int)",
-   "parameters": [
-    {
-     "name": "toName",
-     "type": "string",
-     "description": ""
-    },
-    {
-     "name": "fromSlot",
-     "type": "int",
-     "description": ""
-    },
-    {
-     "name": "limit",
-     "type": "int",
-     "description": "Is optional"
-    },
-    {
-     "name": "toSlot",
-     "type": "int",
-     "description": "Is optional"
-    }
-   ],
-   "return": "int",
-   "description": "Push items from this inventory to another inventory. Returns the amount transferred."
+   "name": ".decrypt(...)",
+   "description": "no description is available because this function is not provided via getDocs()"
   },
   {
    "name": ".list()",
