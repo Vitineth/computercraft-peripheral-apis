@@ -103,6 +103,7 @@ html,body{
     background: #F8F7F8;
     // padding: 30px;
     height: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
     .inner{
         position: fixed;
@@ -207,13 +208,52 @@ html,body{
     z-index: -1;
 }
 
-@media (max-width:780px)  {
+.scroll-to-top{
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: #EAA9C0;
+    width: 3.5pc;
+    height: 3.5pc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1000px;
+    box-shadow: rgba(30, 30, 30, 0.3) 0px 19px 38px, rgba(30, 30, 30, 0.22) 0px 15px 12px;
+    cursor: pointer;
+}
+
+@media (max-width:800px)  {
+    .body{
+        flex-direction: column !important;
+    }
+    .sidebar{
+        height: initial;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        padding-bottom: 5px;
+        
+        .inner{
+            position: initial; 
+            width: initial; 
+            top: initial; 
+            left: initial; 
+            max-height: 30vh;
+            overflow-y: auto;
+        }
+    }
     .content{
         .alternate{
             display: none;
         }
         .entry{
             flex-direction: column;
+
+            &.left-only[data-scroll-to-me]{
+                margin-left: 20px;
+                max-width: initial;
+                margin-right: initial;
+            }
 
             .left,.right{
                 flex-basis: 100%;
@@ -223,6 +263,8 @@ html,body{
 
             .right{
                 border-bottom: 1px solid gainsboro;
+                background: #171C1C;
+                padding: 20px;
             }
         }
     }
